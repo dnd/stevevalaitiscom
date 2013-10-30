@@ -1,0 +1,12 @@
+---
+layout: default
+type: blog
+---
+<section class="tag">
+  <h2>Articles in <span class="tag-name">{{page.tag}}</span></h2>
+  {%assign posts_list = paginator.posts%}
+  {%include post_list.html%}
+
+  {% assign pager = paginator %}
+  {% include pagination.html %}
+</section>

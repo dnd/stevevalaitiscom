@@ -1,0 +1,63 @@
+---
+layout: default
+type: blog
+title: Blog Archive
+---
+<section id="archive">
+  <h2>Archive</h2>
+  {% for post in site.posts  %}
+    {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
+    {% capture this_month %}{{ post.date | date: "%b" }}{% endcapture %}
+    {% capture next_year %}{{ post.previous.date | date: "%Y" }}{% endcapture %}
+    {% capture next_month %}{{ post.previous.date | date: "%b" }}{% endcapture %}
+
+    {% if forloop.first %}
+    <h3 id="{{ this_year }}-ref">{{this_year}}</h3>
+    <ul class="months">
+      <li>
+        <h4 id="{{ this_year }}-{{ this_month }}-ref"><span class="year">{{this_year}}</span>{{ this_month }}</h4>
+        <ul class="posts">
+    {% endif %}
+
+          <li>
+            <article>
+              <header>
+                <h5><a href="{{ post.url }}">{{ post.title }}</a></h5>
+                <p>Published in <a href="{{post.category | category_url}}" class="category">{{post.category}}</a></p>
+              </header>
+              <section class="excerpt">
+                <p>{{post.content | strip_html | truncate:150}}</p>
+              </section>
+            </article>
+          </li>
+
+    {% if forloop.last %}
+        </ul>
+      </li>
+    </ul>
+    {% else %}
+      {% if this_year != next_year %}
+          </ul>
+        </li>
+      </ul>
+      <h3 id="{{ next_year }}-ref">{{next_year}}</h3>
+      <ul class="months">
+        <li>
+          <h4 id="{{ next_year }}-{{ next_month }}-ref"><span class="year">{{next_year}}</span>{{ next_month }}</h4>
+          <ul class="posts">
+      {% else %}    
+        {% if this_month != next_month %}
+          </ul>
+        </li>
+        <li>
+          <h4 id="{{ this_year }}-{{ next_month }}-ref"><span class="year">{{this_year}}</span>{{ next_month }}</h4>
+          <ul class="posts">
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</section>
+
+<script type="text/javascript">
+  $(initArchive);
+</script>

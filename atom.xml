@@ -1,0 +1,4 @@
+---
+layout: nil
+---
+{%assign feed_posts = site.posts%}{%include atom.xml %}

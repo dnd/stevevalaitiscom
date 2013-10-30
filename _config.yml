@@ -1,0 +1,47 @@
+excerpt_separator: "!--more--"
+future: false
+markdown: redcarpet
+name: Steve Valaitis
+paginate: 10
+paginate_path: /blog/page:num
+permalink: /blog/:title/
+pygments: true
+top_categories: 10
+top_tags: 10
+
+#feed_posts: 10
+
+#Categories
+category_page_layout: category_page
+category_dir: categories
+
+#Tagging
+tag_page_layout: tag_page
+tag_dir: tags
+tag_permalink_style: pretty
+
+author:
+  name: Steve Valaitis
+  email: steve@digitalnothing.com
+
+exclude: 
+  - compass.rb
+  - Gemfile
+  - Gemfile.lock
+  - Guardfile
+  - Procfile
+
+constants:
+  tagline: 
+  domain: stevevalaitis.com
+  description: moar descriptions!
+
+  disqus-user: stevevalaitis
+  google-analytics-id: UA-44770325-2
+
+social:
+  github: dnd
+  twitter: stevednd
+  gplus: 106372906435680238293
+  linkedin: stevevalaitis
+  skype: stevednd

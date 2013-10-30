@@ -1,0 +1,9 @@
+---
+layout: default
+type: main
+---
+{% assign posts_list = site.posts | take:site.paginate%}
+{%include post_list.html%}
+
+{%assign pager = site.posts | fake_pager %}
+{%include pagination.html %}

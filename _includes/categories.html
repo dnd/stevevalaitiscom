@@ -1,0 +1,12 @@
+<div id="top_categories">
+  <h4>Categories</h4>
+  <ul>
+    {%assign cats = site.categories | sort_by_name | sort_by_size%}
+    {% for cat in cats %}
+    <li><a href="{{cat[0] | category_url}}/">{{cat[0]}} ({{cat[1].size}})</a></li>
+    {%endfor%}
+    {%if site.categories.size > site.top_categories%}
+    <li><a href="{{'' | category_url}}">All Categories</a></li>
+    {%endif%}
+  </ul>
+</div>

@@ -1,0 +1,13 @@
+<div id="top_tags">
+  <h4>Popular Tags</h4>
+  <ul>
+    {%assign tags = site.tags | sort_by_name | sort_by_size%}
+    {%for tag in tags limit:site.top_tags%}
+    <li><a href="{{tag[0] | tag_url}}">{{tag[0]}} ({{tag[1].size}})</a></li>
+    {%endfor%}
+    {%if site.tags.size > site.top_tags%}
+    <li><a href="{{'' | tag_url}}">All Tags</a></li>
+    {%endif%}
+  </ul>
+</div>
+

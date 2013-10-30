@@ -1,0 +1,34 @@
+<nav id="pagination">
+  <div class="previous">
+  {% if pager.previous_page %}
+    <a href="{{ pager.base_path | page_url: pager.previous_page }}"><i class="icon-chevron-sign-left"></i>Newer</a>
+  {% endif %}
+    &nbsp;
+  </div>
+
+  <div class="next">&nbsp;
+    {% if pager.next_page %}
+      <a href="{{ pager.next_page_path }}">Older<i class="icon-chevron-sign-right"></i></a>
+    {% endif %}
+  </div>
+
+  <div class="pages">
+    {% if pager.total_pages > 1 %}
+    <ul>
+      {% for count in (1..pager.total_pages) %}
+        <li class="page">
+          {% if count == pager.page %}
+            <span class="current">{{ count }}</span>
+          {% else %}
+            {% if count > 1 %}
+            <a href="{{pager.base_path | page_url: count}}">{{ count }}</a>
+            {% else %}
+            <a href="{{pager.base_path | page_url}}">1</a>
+            {%endif%}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</nav>

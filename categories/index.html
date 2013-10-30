@@ -1,0 +1,28 @@
+---
+layout: default
+title: Categories
+type: blog
+---
+<section id="categories">
+  <h2>Categories</h2>
+  <ul>
+    <li>
+      <h3>Alphabetical</h3>
+      <ul>
+        {%assign alpha_cats = site.categories | sort_by_name%}
+        {%for cat in alpha_cats%}
+        <li><a href="{{cat[0] | category_url}}">{{cat[0]}} ({{cat[1].size}})</a></li>
+        {%endfor%}
+      </ul>
+    </li>
+    <li>
+      <h3>Popular</h3>
+      <ul>
+        {%assign popular_cats = alpha_cats | sort_by_size%}
+        {%for cat in popular_cats%}
+        <li><a href="{{cat[0] | category_url}}">{{cat[0]}} ({{cat[1].size}})</a></li>
+        {%endfor%}
+      </ul>
+    </li>
+  </ul>
+</section>

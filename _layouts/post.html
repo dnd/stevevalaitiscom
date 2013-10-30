@@ -1,0 +1,41 @@
+---
+layout: default
+type: post
+---
+<article class="post">
+  <header>
+    <h2>{{page.title}}</h2>
+    <p>Published <time>{{page.date | date: "%B %-d, %Y"}}</time> in <a href="{{page.category | category_url}}" class="category">{{page.category}}</a></p>
+  </header>
+  <section class="content">{{content | mark_excerpt}}</section>
+  <footer>
+    <div class="tags">
+      <h3>Tags</h3>
+      <ul class="tags">
+      {% for tag in page.tags%}
+        <li><a href="/tags/{{tag}}.html">{{tag}}</a></li>
+      {%endfor%}
+      </ul>
+    </div>
+  </footer>
+</article>
+
+<section id="related_posts">
+  <h3>Related Posts</h3>
+  <ul>
+    {% for relpost in site.related_posts limit:4 %}
+    <li>
+      <h4><a href="{{relpost.url}}">{{relpost.title}}</a></h4>
+      <p>{{relpost.excerpt | strip_html | truncate: 140}}</p>
+    </li>
+    {% endfor %}
+    {% if site.related_posts.size == 3 %}
+    <li></li>
+    {%endif%}
+  </ul>
+</section>
+
+<section id="comments" class="comments">
+  <h3>Comments</h3>
+  {% include comments.html %}
+</section>
