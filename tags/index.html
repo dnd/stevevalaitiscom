@@ -1,0 +1,28 @@
+---
+layout: default
+title: Tags
+type: blog
+---
+<section id="tags">
+  <h2>Tags</h2>
+  <ul>
+    <li>
+      <h3>Alphabetical</h3>
+      <ul>
+        {%assign alpha_tags = site.tags | sort_by_name%}
+        {%for tag in alpha_tags%}
+        <li><a href="{{tag[0] | tag_url}}">{{tag[0]}} ({{tag[1].size}})</a></li>
+        {%endfor%}
+      </ul>
+    </li>
+    <li>
+      <h3>Popular</h3>
+      <ul>
+        {%assign popular_tags = alpha_tags | sort_by_size%}
+        {%for tag in popular_tags%}
+        <li><a href="{{tag[0] | tag_url}}">{{tag[0]}} ({{tag[1].size}})</a></li>
+        {%endfor%}
+      </ul>
+    </li>
+  </ul>
+</section>
