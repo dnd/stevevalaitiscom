@@ -1,0 +1,36 @@
+---
+layout: post
+title: Faking A Pager In Jekyll
+category: programming
+tags: jekyll pagination programming
+---
+While creating this site I wanted to mount the blog files under blog/, but still
+have the home page be the first page of posts. Getting the first page of posts
+on the home page was no problem. Due to the way that Jekyll does its pagination
+though, getting the actual pagination links to show up was a different story.
+!--more--
+
+When the Jekyll generator runs to create the blog pages, the pager is only in
+existence for the creation of those pages. It does not stay scoped to the site
+data or anything like that.
+
+To accomplish what I wanted, which was to have pagination outside of the
+generated blog pages I faked a pager using a filter.
+
+{%highlight ruby%}
+def fake_pager(site, posts)
+  class << site
+    def config; self; end
+  end
+  Pager.new site, 1, posts
+end
+{%endhighlight%}
+
+Then in /index.html just assign the pager and call the pagination include and
+use `pager` instead of `paginator`.
+
+{%highlight html%}{%raw%}
+{%assign pager = site | fake_pager: site.posts %}
+{%include pagination.html %}
+{%endraw%}{%endhighlight%}
+
