@@ -13,7 +13,7 @@ type: post
       <h3>Tags</h3>
       <ul class="tags">
       {% for tag in page.tags%}
-        <li><a href="/tags/{{tag}}.html">{{tag}}</a></li>
+        <li><a href="{{tag | tag_url}}">{{tag}}</a></li>
       {%endfor%}
       </ul>
     </div>
