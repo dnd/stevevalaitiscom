@@ -6,7 +6,7 @@ DEST_BRANCH="gh-pages"
 DEPLOY_DIR="_deploy"
 
 git checkout $SOURCE_BRANCH
-jekyll build -d $TMP_DIR
+jekyll build -d $DEPLOY_DIR
 git checkout $DEST_BRANCH
 # This will remove previous files, which we may not want (e.g. CNAME)
 git rm -rf .
