@@ -211,6 +211,8 @@ body > footer {
 
   li {display:inline;margin:5px;}
 
+  .details {margin-top:1em;}
+
   .social, .subscribe {
     padding-top:5px;
     a {
@@ -219,8 +221,12 @@ body > footer {
     }
   }
 
+  .social ul {margin-bottom:0;}
+
   .subscribe {
     *:last-child {margin-bottom:0;}
+
+    li {display:block;}
   }
 
 
@@ -452,9 +458,20 @@ div.highlight {
   //i {color:#bb3627;font-size:24px !important;}
 //}
 
-.rss-icon {
-  i:first-child {color:#fe9900;font-size:24px;}
-  i {color:#ffffff;}
+.icon-stack.rss-icon {
+  height: 48px;
+  line-height:48px;
+  width: 48px;
+  i:first-child {color:#fe9900;font-size:48px;}
+  i:last-child {color:#ffffff;font-size:36px;}
+
+  @media #{$small} {
+    height:32px;
+    line-height:32px;
+    width:32px;
+    i:first-child {font-size:24px;}
+    i:last-child {font-size:16px;}
+  }
 }
 
   //.skype-icon {
