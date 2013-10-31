@@ -128,11 +128,11 @@ module Jekyll
 
   module Filters
     def category_url(cat)
-      GroupBasePage.type_dir @context.environments.first['site'], 'category', cat
+      GroupBasePage.type_dir @context.environments.first['site'], 'category', cat if cat
     end
 
     def tag_url(tag)
-      GroupBasePage.type_dir @context.environments.first['site'], 'tag', tag
+      GroupBasePage.type_dir @context.environments.first['site'], 'tag', tag if tag
     end
 
     def page_url(path, page = 1)
