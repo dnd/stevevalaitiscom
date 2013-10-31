@@ -8,8 +8,7 @@ module Jekyll
       array.take num
     end
 
-    def fake_pager(posts)
-      site = @context.environments.first['site']
+    def fake_pager(site, posts)
       class << site
         def config; self; end
       end
