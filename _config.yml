@@ -26,6 +26,7 @@ author:
 
 exclude: 
   - compass.rb
+  - deploy.sh
   - Gemfile
   - Gemfile.lock
   - Guardfile
