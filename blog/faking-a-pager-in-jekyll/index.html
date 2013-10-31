@@ -1,14 +1,46 @@
-<!DOCTYPE html><!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if (gte IE 9)|!(IE)]<!--> <html> <!--<![endif]--><head><meta charset="utf-8" /><meta content="width=device-width,intitial-scale=1.0" name="viewport" /><title>Hello World - Steve Valaitis</title><link href="/assets/css/app.css" rel="stylesheet" /><script src="http://localhost:35729/livereload.js"></script><script src="http://code.jquery.com/jquery-1.10.1.min.js"></script><script src="/assets/js/app.js"></script></head><body><div class="wrapper"><header><div id="masthead"><div class="title"><a id="menu_button"><i class="icon-reorder"></i></a><a href="/">Steve Valaitis</a></div><div class="menu"><nav><ul><li><a href="/">Blog</a></li><li><a href="/archive">Archive</a></li><li><a href="/projects">Projects</a></li><li><a href="/about">About</a></li></ul></nav></div></div></header><div id="content_wrap"><div id="content"><article class="post">
+<!DOCTYPE html><!--[if IE 7]><html class="ie7"><![endif]--><!--[if IE 8]><html class="ie8"><![endif]--><!--[if IE 9]><html class="ie9"><![endif]--><!--[if (gte IE 9)|!(IE)]<!--> <html> <!--<![endif]--><head><meta charset="utf-8" /><meta content="width=device-width,intitial-scale=1.0" name="viewport" /><title>Faking A Pager In Jekyll - Steve Valaitis</title><link href="/assets/css/app.css" rel="stylesheet" /><script src="http://localhost:35729/livereload.js"></script><script src="http://code.jquery.com/jquery-1.10.1.min.js"></script><script src="/assets/js/app.js"></script></head><body><div class="wrapper"><header><div id="masthead"><div class="title"><a id="menu_button"><i class="icon-reorder"></i></a><a href="/">Steve Valaitis</a></div><div class="menu"><nav><ul><li><a href="/">Blog</a></li><li><a href="/archive">Archive</a></li><li><a href="/projects">Projects</a></li><li><a href="/about">About</a></li></ul></nav></div></div></header><div id="content_wrap"><div id="content"><article class="post">
   <header>
-    <h2>Hello World</h2>
-    <p>Published <time>October 25, 2013</time> in <a href="/categories/stuff" class="category">stuff</a></p>
+    <h2>Faking A Pager In Jekyll</h2>
+    <p>Published <time>October 27, 2013</time> in <a href="/categories/programming" class="category">programming</a></p>
   </header>
-  <section class="content"><p>See above.</p>
+  <section class="content"><p>While creating this site I wanted to mount the blog files under blog/, but still
+have the home page be the first page of posts. Getting the first page of posts
+on the home page was no problem. Due to the way that Jekyll does its pagination
+though, getting the actual pagination links to show up was a different story.
+<span id="more"></span></p>
+
+<p>When the Jekyll generator runs to create the blog pages, the pager is only in
+existence for the creation of those pages. It does not stay scoped to the site
+data or anything like that.</p>
+
+<p>To accomplish what I wanted, which was to have pagination outside of the
+generated blog pages I faked a pager using a filter.</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="k">def</span> <span class="nf">fake_pager</span><span class="p">(</span><span class="n">site</span><span class="p">,</span> <span class="n">posts</span><span class="p">)</span>
+  <span class="k">class</span> <span class="o">&lt;&lt;</span> <span class="n">site</span>
+    <span class="k">def</span> <span class="nf">config</span><span class="p">;</span> <span class="nb">self</span><span class="p">;</span> <span class="k">end</span>
+  <span class="k">end</span>
+  <span class="no">Pager</span><span class="o">.</span><span class="n">new</span> <span class="n">site</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">posts</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<p>Then in /index.html just assign the pager and call the pagination include and
+use <code>pager</code> instead of <code>paginator</code>.</p>
+
+<div class="highlight"><pre><code class="html">{%assign pager = site | fake_pager: site.posts %}
+{%include pagination.html %}
+</code></pre></div>
 </section>
   <footer>
     <div class="tags">
       <h3>Tags</h3>
       <ul class="tags">
+      
+        <li><a href="/tags/jekyll">jekyll</a></li>
+      
+        <li><a href="/tags/pagination">pagination</a></li>
+      
+        <li><a href="/tags/programming">programming</a></li>
       
       </ul>
     </div>
@@ -20,9 +52,9 @@
   <ul>
     
     <li>
-      <h4><a href="/blog/faking-a-pager-in-jekyll/">Faking A Pager In Jekyll</a></h4>
-      <p>While creating this site I wanted to mount the blog files under blog/, but still
-have the home page be the first page of posts. Getting t...</p>
+      <h4><a href="/blog/hello-world/">Hello World</a></h4>
+      <p>See above.
+</p>
     </li>
     
     
