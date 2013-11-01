@@ -15,6 +15,6 @@ cp -r $DEPLOY_DIR/. .
 # Delete this script from the output
 rm ./$SELF
 rm -r $DEPLOY_DIR
-git add -A
+git add -f .
 git commit
 #git checkout $SOURCE_BRANCH
