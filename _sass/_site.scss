@@ -3,6 +3,7 @@ $primary-color: #34495e;
 //#38425e;
 $header-color: #34495e;
 $header-height:50px;
+$footer-color: #473714;
 $footer-height:250px;
 $dotted-border:dotted 1px lighten($primary-color, 10%);
 
@@ -183,7 +184,6 @@ ul {list-style-type:none;}
   }
 }
 
-$footer-color: #473714;
 body > footer {
   @include grid-row(collapse);
   background-color:darken($footer-color, 0%);
