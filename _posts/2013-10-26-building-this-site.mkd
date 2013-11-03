@@ -1,0 +1,101 @@
+---
+layout: post
+title: Building This Site
+category: programming
+tags: programming jekyll ruby stevevalaitiscom blog github-pages compass livereload design foundation responsive prose
+---
+After putting it off for so long, I finally decided to join the early 2000s and put
+up a personal site for myself. With that decision came the question of what to
+build the site with. I settled on [Jekyll][jekyllrb] for generating the site,
+[Foundation][foundation] for the design framework, and [Github Pages][gh-pages]
+for hosting the site.
+!--more--
+
+### Site Generation
+I was fairly certain I wanted to stay with something Ruby based. This counted
+out Wordpress, but I didn't necessarily want to build the site with Rails
+either. I've heard the name Jekyll tossed out numerous times, along with praises
+of its static site generation and being blog-aware. This seemed like it would be
+a great fit. The site was to be simple, mostly a blog with just a couple other
+static pages.
+
+Jekyll was at times frustrating, especially when trying to extend it. For the
+most part it was okay though. It just took coming to terms with the way Jekyll
+works versus typical dynamic site development with something like Rails or
+Sinatra. Finding answers to questions online was at times difficult as many of
+the top results were for old blog posts, or Stack Overflow questions, and Jekyll
+may or may have not changed in that time.
+
+My one big irritation with Jekyll was that for something that is supposed to be
+blog aware, why on Earth doesn't it generate category and tag pages? It knows
+about tags and categories, but doesn't do anything with them besides that.
+
+I wanted to initially use [Slim][slim] for all my templates. Unfortunately I
+quickly ran into some issues when trying to nest include some templates. This
+was due to Slim being whitespace sensitive and the rendered templates containing
+newlines and whitespacing that didn't match with the current indentation level.
+I may go back to this in the future and see if changing the Slim rendering
+options will allow me to use it everywhere, but for now I just went with a mix
+of Slim and HTML.
+
+I had to use [SCSS][sass] for my CSS, because, well basically if you somehow
+don't know what SCSS is by now you really need to go the site and look, as
+you're really missing out. I currently compile the SCSS files with
+[Compass][compass].
+
+In the future I may replace the individual gems and processes for asset
+management with the [jekyll-asset-pipeline][jekyll-asset-pipeline] gem, which I
+didn't come across until I was almost finished with the site.
+
+### Design
+I knew for the design that I wanted to make a site that was responsive. Go ahead
+and view this site on your phone, and desktop. It's all the same markup, but
+displays differently in each. 
+
+My CSS framework of choice is [Zurb's Foundation 4][foundation]. The defaults are
+pretty good, and it makes it easy to build a nice responsive site pretty
+quickly. Even though I think you can get a nicer looking site out of the box
+with Bootstrap, I really like that Foundation is built with SCSS. This allows me
+to use `@include` and `@extend` statements in a way that doesn't involve
+plastering Foundation classes all over my markup.
+
+There's a little bit of [Font Awesome][fontawesome] for some of the icons around
+the site. Icon fonts are pretty cool, my only frustration with Font Awesome is
+having to add specific class in my markup. I would much rather have my own
+semantic class names. 
+
+It's not directly part of the site itself, but I run [LiveReload][livereload].
+It's a huge timesaver, and makes the design process so much less tedious. It
+removes the need to refresh the browser every time a styling change is made.
+
+### Hosting
+Since the site is all static HTML pages, I didn't want to even bother with
+hosting myself, and having to worry about server crashes, outages, etc... As
+such, I decided to host the site using [Github Pages][gh-pages]. I'm using
+custom plugins and code with Jekyll, so I can't take advantage of the automated
+site generation offered with Pages. It's not too big of an issue though, I just
+deploy the site using a simple [shell script][deploysh].
+
+### What's Next
+As much as I love Vim, writing posts in it can be a little bit of a pain. Plus, 
+sometimes I'm not at my primary machine, or have a development environment
+present. Currently this means I can't write a post, because I have no way to
+publish it. 
+
+To alleviate this problem and give myself a web based editor for my posts, I'm
+going to use [Prose][prose]. Then I'll setup [jekyll-hook][jekyll-hook] on a
+development server to receive a post-commit hook from Github and redeploy my
+site.
+
+[compass]: http://compass-style.org
+[deploysh]: https://github.com/dnd/stevevalaitiscom/blob/master/deploy.sh
+[fontawesome]: http://fontawesome.io
+[jekyllrb]: http://jekyllrb.com
+[jekyll-asset-pipeline]: https://github.com/matthodan/jekyll-asset-pipeline
+[jekyll-hook]: https://github.com/developmentseed/jekyll-hook
+[foundation]: http://foundation.zurb.com
+[gh-pages]: http://pages.github.com
+[livereload]: http://livereload.com
+[prose]: http://prose.io
+[sass]: http://sass-lang.com
+[slim]: http://slim-lang.com
