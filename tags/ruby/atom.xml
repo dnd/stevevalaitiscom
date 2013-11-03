@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <title>SteveValaitis.com</title>
-    <link href="/"/>
-    <link type="application/atom+xml" rel="self" href="/atom.xml"/>
+    <title>SteveValaitis.com - Tag: ruby</title>
+    <link href="/tags/ruby/"/>
+    <link type="application/atom+xml" rel="self" href="/tags/ruby/atom.xml"/>
     <updated>2013-11-03T14:08:05-06:00</updated>
     <id></id>
     <author>
@@ -10,45 +10,6 @@
         <email>steve@digitalnothing.com</email>
     </author>
 
-    
-    <entry>
-        <id>/blog/faking-a-pager-in-jekyll</id>
-        <link type="text/html" rel="alternate" href="/blog/faking-a-pager-in-jekyll/"/>
-        <title>Faking A Pager In Jekyll</title>
-        <updated>2013-10-27T00:00:00-05:00</updated>
-        <author>
-            <name>Steve Valaitis</name>
-            <uri>/</uri>
-        </author>
-        <content type="html">&lt;p&gt;While creating this site I wanted to mount the blog files under blog/, but still
-have the home page be the first page of posts. Getting the first page of posts
-on the home page was no problem. Due to the way that Jekyll does its pagination
-though, getting the actual pagination links to show up was a different story.
-&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
-
-&lt;p&gt;When the Jekyll generator runs to create the blog pages, the pager is only in
-existence for the creation of those pages. It does not stay scoped to the site
-data or anything like that.&lt;/p&gt;
-
-&lt;p&gt;To accomplish what I wanted, which was to have pagination outside of the
-generated blog pages I faked a pager using a filter.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;fake_pager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-  &lt;span class=&quot;no&quot;&gt;Pager&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;posts&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Then in /index.html just assign the pager and call the pagination include and
-use &lt;code&gt;pager&lt;/code&gt; instead of &lt;code&gt;paginator&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;{%assign pager = site | fake_pager: site.posts %}
-{%include pagination.html %}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-</content>
-    </entry>
     
     <entry>
         <id>/blog/building-this-site</id>
@@ -145,19 +106,6 @@ publish it. &lt;/p&gt;
 going to use &lt;a href=&quot;http://prose.io&quot;&gt;Prose&lt;/a&gt;. Then I&amp;#39;ll setup &lt;a href=&quot;https://github.com/developmentseed/jekyll-hook&quot;&gt;jekyll-hook&lt;/a&gt; on a
 development server to receive a post-commit hook from Github and redeploy my
 site.&lt;/p&gt;
-</content>
-    </entry>
-    
-    <entry>
-        <id>/blog/hello-world</id>
-        <link type="text/html" rel="alternate" href="/blog/hello-world/"/>
-        <title>Hello World</title>
-        <updated>2013-10-25T00:00:00-05:00</updated>
-        <author>
-            <name>Steve Valaitis</name>
-            <uri>/</uri>
-        </author>
-        <content type="html">&lt;p&gt;See above.&lt;/p&gt;
 </content>
     </entry>
     

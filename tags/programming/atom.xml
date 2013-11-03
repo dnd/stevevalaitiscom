@@ -3,7 +3,7 @@
     <title>SteveValaitis.com - Tag: programming</title>
     <link href="/tags/programming/"/>
     <link type="application/atom+xml" rel="self" href="/tags/programming/atom.xml"/>
-    <updated>2013-11-01T12:27:43-05:00</updated>
+    <updated>2013-11-03T14:08:05-06:00</updated>
     <id></id>
     <author>
         <name>Steve Valaitis</name>
@@ -47,6 +47,104 @@ use &lt;code&gt;pager&lt;/code&gt; instead of &lt;code&gt;paginator&lt;/code&gt;
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;{%assign pager = site | fake_pager: site.posts %}
 {%include pagination.html %}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+</content>
+    </entry>
+    
+    <entry>
+        <id>/blog/building-this-site</id>
+        <link type="text/html" rel="alternate" href="/blog/building-this-site/"/>
+        <title>Building This Site</title>
+        <updated>2013-10-26T00:00:00-05:00</updated>
+        <author>
+            <name>Steve Valaitis</name>
+            <uri>/</uri>
+        </author>
+        <content type="html">&lt;p&gt;After putting it off for so long, I finally decided to join the early 2000s and put
+up a personal site for myself. With that decision came the question of what to
+build the site with. I settled on &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; for generating the site,
+&lt;a href=&quot;http://foundation.zurb.com&quot;&gt;Foundation&lt;/a&gt; for the design framework, and &lt;a href=&quot;http://pages.github.com&quot;&gt;Github Pages&lt;/a&gt;
+for hosting the site.
+&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3&gt;Site Generation&lt;/h3&gt;
+
+&lt;p&gt;I was fairly certain I wanted to stay with something Ruby based. This counted
+out Wordpress, but I didn&amp;#39;t necessarily want to build the site with Rails
+either. I&amp;#39;ve heard the name Jekyll tossed out numerous times, along with praises
+of its static site generation and being blog-aware. This seemed like it would be
+a great fit. The site was to be simple, mostly a blog with just a couple other
+static pages.&lt;/p&gt;
+
+&lt;p&gt;Jekyll was at times frustrating, especially when trying to extend it. For the
+most part it was okay though. It just took coming to terms with the way Jekyll
+works versus typical dynamic site development with something like Rails or
+Sinatra. Finding answers to questions online was at times difficult as many of
+the top results were for old blog posts, or Stack Overflow questions, and Jekyll
+may or may have not changed in that time.&lt;/p&gt;
+
+&lt;p&gt;My one big irritation with Jekyll was that for something that is supposed to be
+blog aware, why on Earth doesn&amp;#39;t it generate category and tag pages? It knows
+about tags and categories, but doesn&amp;#39;t do anything with them besides that.&lt;/p&gt;
+
+&lt;p&gt;I wanted to initially use &lt;a href=&quot;http://slim-lang.com&quot;&gt;Slim&lt;/a&gt; for all my templates. Unfortunately I
+quickly ran into some issues when trying to nest include some templates. This
+was due to Slim being whitespace sensitive and the rendered templates containing
+newlines and whitespacing that didn&amp;#39;t match with the current indentation level.
+I may go back to this in the future and see if changing the Slim rendering
+options will allow me to use it everywhere, but for now I just went with a mix
+of Slim and HTML.&lt;/p&gt;
+
+&lt;p&gt;I had to use &lt;a href=&quot;http://sass-lang.com&quot;&gt;SCSS&lt;/a&gt; for my CSS, because, well basically if you somehow
+don&amp;#39;t know what SCSS is by now you really need to go the site and look, as
+you&amp;#39;re really missing out. I currently compile the SCSS files with
+&lt;a href=&quot;http://compass-style.org&quot;&gt;Compass&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the future I may replace the individual gems and processes for asset
+management with the &lt;a href=&quot;https://github.com/matthodan/jekyll-asset-pipeline&quot;&gt;jekyll-asset-pipeline&lt;/a&gt; gem, which I
+didn&amp;#39;t come across until I was almost finished with the site.&lt;/p&gt;
+
+&lt;h3&gt;Design&lt;/h3&gt;
+
+&lt;p&gt;I knew for the design that I wanted to make a site that was responsive. Go ahead
+and view this site on your phone, and desktop. It&amp;#39;s all the same markup, but
+displays differently in each. &lt;/p&gt;
+
+&lt;p&gt;My CSS framework of choice is &lt;a href=&quot;http://foundation.zurb.com&quot;&gt;Zurb&amp;#39;s Foundation 4&lt;/a&gt;. The defaults are
+pretty good, and it makes it easy to build a nice responsive site pretty
+quickly. Even though I think you can get a nicer looking site out of the box
+with Bootstrap, I really like that Foundation is built with SCSS. This allows me
+to use &lt;code&gt;@include&lt;/code&gt; and &lt;code&gt;@extend&lt;/code&gt; statements in a way that doesn&amp;#39;t involve
+plastering Foundation classes all over my markup.&lt;/p&gt;
+
+&lt;p&gt;There&amp;#39;s a little bit of &lt;a href=&quot;http://fontawesome.io&quot;&gt;Font Awesome&lt;/a&gt; for some of the icons around
+the site. Icon fonts are pretty cool, my only frustration with Font Awesome is
+having to add specific class in my markup. I would much rather have my own
+semantic class names. &lt;/p&gt;
+
+&lt;p&gt;It&amp;#39;s not directly part of the site itself, but I run &lt;a href=&quot;http://livereload.com&quot;&gt;LiveReload&lt;/a&gt;.
+It&amp;#39;s a huge timesaver, and makes the design process so much less tedious. It
+removes the need to refresh the browser every time a styling change is made.&lt;/p&gt;
+
+&lt;h3&gt;Hosting&lt;/h3&gt;
+
+&lt;p&gt;Since the site is all static HTML pages, I didn&amp;#39;t want to even bother with
+hosting myself, and having to worry about server crashes, outages, etc... As
+such, I decided to host the site using &lt;a href=&quot;http://pages.github.com&quot;&gt;Github Pages&lt;/a&gt;. I&amp;#39;m using
+custom plugins and code with Jekyll, so I can&amp;#39;t take advantage of the automated
+site generation offered with Pages. It&amp;#39;s not too big of an issue though, I just
+deploy the site using a simple &lt;a href=&quot;https://github.com/dnd/stevevalaitiscom/blob/master/deploy.sh&quot;&gt;shell script&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3&gt;What&amp;#39;s Next&lt;/h3&gt;
+
+&lt;p&gt;As much as I love Vim, writing posts in it can be a little bit of a pain. Plus, 
+sometimes I&amp;#39;m not at my primary machine, or have a development environment
+present. Currently this means I can&amp;#39;t write a post, because I have no way to
+publish it. &lt;/p&gt;
+
+&lt;p&gt;To alleviate this problem and give myself a web based editor for my posts, I&amp;#39;m
+going to use &lt;a href=&quot;http://prose.io&quot;&gt;Prose&lt;/a&gt;. Then I&amp;#39;ll setup &lt;a href=&quot;https://github.com/developmentseed/jekyll-hook&quot;&gt;jekyll-hook&lt;/a&gt; on a
+development server to receive a post-commit hook from Github and redeploy my
+site.&lt;/p&gt;
 </content>
     </entry>
     
